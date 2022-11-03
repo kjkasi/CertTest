@@ -20,10 +20,10 @@ namespace Client.Controllers
         {
             var client = _httpClientFactory.CreateClient();
 
-            var disco = await client.GetDiscoveryDocumentAsync("https://localhost:5001");
+            var disco = await client.GetDiscoveryDocumentAsync("https://host.docker.internal:5001");
             if (disco.IsError)
             {
-                return Ok(disco.Exception?.InnerException?.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, disco.Exception?.InnerException?.Message);
             }
             
             return Ok(disco.HttpResponse);
