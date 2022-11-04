@@ -10,22 +10,19 @@
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:6001;http://localhost:6000"
     },
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "environmentVariables": {
+        "ASPNETCORE_Kestrel__Certificates__Default__Password": "Client",
+        "ASPNETCORE_Kestrel__Certificates__Default__Path": "/https/Client.pfx"
+      },
       "publishAllPorts": true,
       "useSSL": true,
       "httpPort": 6000,
-      "sslPort": 6001
+      "sslPort": 6001,
+      "DockerfileRunArguments": "-v C:\\Users\\vedma\\.aspnet\\https:/https/"
     }
   },
   "$schema": "https://json.schemastore.org/launchsettings.json",
