@@ -23,10 +23,10 @@ namespace Client.Controllers
             var disco = await client.GetDiscoveryDocumentAsync("https://host.docker.internal:5001");
             if (disco.IsError)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, disco.Exception?.InnerException?.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, disco.Error);
             }
             
-            return Ok(disco.HttpResponse);
+            return Ok(disco.Json);
         }
     }
 }
